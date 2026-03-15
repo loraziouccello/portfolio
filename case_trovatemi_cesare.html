@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trovatemi Cesare! — Case Study · Lorenzo Uccello</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#060605; --surface:#0d0d0b; --cream:#EDE5D4;
+  --gold:#C4A46B; --gold-dim:rgba(196,164,107,0.3);
+  --muted:rgba(237,229,212,0.38); --border:rgba(237,229,212,0.08);
+  --accent:#A68BDB;
+  --mono:'JetBrains Mono',monospace; --serif:'Cormorant Garamond',Georgia,serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--cream);font-family:var(--serif);overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;opacity:0.25;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E")}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:0 56px;height:72px;background:rgba(6,6,5,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-back{font-family:var(--mono);font-size:9px;letter-spacing:0.22em;color:var(--muted);text-decoration:none;text-transform:uppercase;display:flex;align-items:center;gap:10px;transition:color 0.2s}
+.nav-back:hover{color:var(--gold)}
+.nav-project{font-family:var(--mono);font-size:9px;letter-spacing:0.15em;color:rgba(237,229,212,0.2);text-transform:uppercase}
+
+/* HERO */
+.hero{padding:120px 56px 80px;border-bottom:1px solid var(--border)}
+.hero-cat{font-family:var(--mono);font-size:8px;letter-spacing:0.3em;color:var(--accent);text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.hero-cat::before{content:'';display:block;width:24px;height:1px;background:var(--accent)}
+.hero-title{font-size:clamp(44px,5.5vw,76px);font-weight:300;line-height:0.95;margin-bottom:16px}
+.hero-title em{font-style:italic;color:rgba(237,229,212,0.5)}
+.hero-sub{font-family:var(--mono);font-size:10px;letter-spacing:0.18em;color:var(--muted);text-transform:uppercase;margin-bottom:32px}
+.hero-desc{font-size:17px;font-style:italic;color:rgba(237,229,212,0.6);line-height:1.85;max-width:600px;border-left:2px solid var(--gold-dim);padding-left:20px}
+
+/* META BAR */
+.meta-bar{display:flex;gap:0;border:1px solid var(--border);margin:48px 56px 0}
+.meta-item{flex:1;padding:20px 24px;border-right:1px solid var(--border)}
+.meta-item:last-child{border-right:none}
+.meta-label{font-family:var(--mono);font-size:8px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:6px}
+.meta-value{font-size:15px;color:rgba(237,229,212,0.7);font-weight:300}
+
+/* SECTIONS */
+.section{padding:80px 56px}
+.section-header{display:flex;align-items:baseline;gap:20px;margin-bottom:48px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.section-n{font-family:var(--mono);font-size:10px;color:var(--gold);letter-spacing:0.2em}
+.section-t{font-family:var(--mono);font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--muted)}
+
+/* PHASE BLOCKS */
+.phase{margin-bottom:56px}
+.phase:last-child{margin-bottom:0}
+.phase-header{display:flex;align-items:center;gap:16px;margin-bottom:24px}
+.phase-num{font-family:var(--mono);font-size:9px;letter-spacing:0.2em;color:var(--accent);background:rgba(166,139,219,0.1);border:1px solid rgba(166,139,219,0.2);padding:6px 14px;text-transform:uppercase}
+.phase-title{font-size:22px;font-weight:300}
+.phase-desc{font-size:14px;color:rgba(237,229,212,0.55);line-height:1.8;font-weight:300;max-width:600px;margin-bottom:20px}
+
+/* STILLS GRID */
+.stills{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.still{background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;aspect-ratio:16/9;position:relative;overflow:hidden}
+.still-label{font-family:var(--mono);font-size:9px;letter-spacing:0.15em;color:rgba(166,139,219,0.35);text-transform:uppercase;text-align:center;padding:16px;line-height:1.8}
+.stills-2{grid-template-columns:1fr 1fr}
+.stills-2 .still{aspect-ratio:2.2/1}
+
+/* ROLE BLOCK */
+.role-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.role-item{padding:28px;border:1px solid var(--border);border-right:none}
+.role-item:last-child{border-right:1px solid var(--border)}
+.role-icon{font-size:24px;margin-bottom:12px}
+.role-name{font-family:var(--mono);font-size:9px;letter-spacing:0.2em;color:var(--accent);text-transform:uppercase;margin-bottom:8px}
+.role-desc{font-size:13px;color:var(--muted);line-height:1.7;font-weight:300}
+
+/* CTA */
+.cta-bar{display:flex;justify-content:space-between;align-items:center;padding:40px 56px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.cta-text{font-size:16px;color:rgba(237,229,212,0.6);font-weight:300}
+.cta-text strong{color:var(--cream)}
+.btn-gold{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;padding:14px 32px;background:var(--gold);color:var(--bg);text-decoration:none;transition:all 0.3s}
+.btn-gold:hover{background:#E8D4A0}
+
+footer{padding:24px 56px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:rgba(237,229,212,0.2);letter-spacing:0.1em}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  .hero{padding:100px 24px 60px}
+  .meta-bar{flex-direction:column;margin:32px 24px 0}
+  .meta-item{border-right:none;border-bottom:1px solid var(--border)}
+  .meta-item:last-child{border-bottom:none}
+  .section{padding:60px 24px}
+  .stills{grid-template-columns:1fr}
+  .stills-2{grid-template-columns:1fr}
+  .role-grid{grid-template-columns:1fr}
+  .role-item{border-right:1px solid var(--border);border-bottom:none}
+  .role-item:last-child{border-bottom:1px solid var(--border)}
+  nav{padding:0 24px}
+  .cta-bar{flex-direction:column;gap:20px;text-align:center;padding:40px 24px}
+  footer{padding:20px 24px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-back">← Torna al portfolio</a>
+  <span class="nav-project">Case Study</span>
+</nav>
+
+<section class="hero reveal">
+  <div class="hero-cat">Cortometraggio — DoP & Color Grading</div>
+  <div class="hero-title">Trovatemi<br><em>Cesare!</em></div>
+  <div class="hero-sub">Short Film · Cinematography · 2025</div>
+  <div class="hero-desc">Cortometraggio in cui ho curato la direzione della fotografia e il color grading. Dalla pre-produzione alla consegna finale — un progetto costruito con metodo e sensibilità cinematografica.</div>
+</section>
+
+<div class="meta-bar reveal">
+  <div class="meta-item"><div class="meta-label">Progetto</div><div class="meta-value">Cortometraggio</div></div>
+  <div class="meta-item"><div class="meta-label">Ruolo</div><div class="meta-value">DoP · Color Grading</div></div>
+  <div class="meta-item"><div class="meta-label">Anno</div><div class="meta-value">2025</div></div>
+  <div class="meta-item"><div class="meta-label">Formato</div><div class="meta-value">Cinema</div></div>
+</div>
+
+<!-- 01 MY ROLE -->
+<div class="section reveal">
+  <div class="section-header">
+    <span class="section-n">01</span>
+    <span class="section-t">Il mio ruolo</span>
+  </div>
+
+  <div class="role-grid">
+    <div class="role-item">
+      <div class="role-icon">◎</div>
+      <div class="role-name">Direzione Fotografia</div>
+      <div class="role-desc">Scelta delle ottiche, composizione, gestione della luce naturale e artificiale in ogni scena.</div>
+    </div>
+    <div class="role-item">
+      <div class="role-icon">◐</div>
+      <div class="role-name">Color Grading</div>
+      <div class="role-desc">Look cinematografico costruito in DaVinci Resolve. Palette tonale coerente per tutto il film.</div>
+    </div>
+    <div class="role-item">
+      <div class="role-icon">▣</div>
+      <div class="role-name">Supervisione visiva</div>
+      <div class="role-desc">Collaborazione con il regista per definire il linguaggio visivo dall'inizio alla fine del progetto.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 PRE-PRODUZIONE -->
+<div class="section reveal" style="padding-top:0">
+  <div class="section-header">
+    <span class="section-n">02</span>
+    <span class="section-t">Le tre fasi</span>
+  </div>
+
+  <div class="phase reveal">
+    <div class="phase-header">
+      <span class="phase-num">Pre-produzione</span>
+      <span class="phase-title">Pianificazione visiva</span>
+    </div>
+    <div class="phase-desc">Sopralluoghi, shot list, riferimenti visivi e test di luce. Ogni scena è stata studiata prima delle riprese per massimizzare l'efficienza sul set.</div>
+    <div class="stills">
+      <div class="still"><div class="still-label">STILL<br>Sopralluogo</div></div>
+      <div class="still"><div class="still-label">STILL<br>Shot list &<br>Riferimenti</div></div>
+      <div class="still"><div class="still-label">STILL<br>Test di luce</div></div>
+    </div>
+  </div>
+
+  <div class="phase reveal">
+    <div class="phase-header">
+      <span class="phase-num">Riprese</span>
+      <span class="phase-title">Sul set</span>
+    </div>
+    <div class="phase-desc">Riprese gestite con approccio cinematografico: composizione curata, luce naturale sfruttata al massimo, movimenti di camera intenzionali.</div>
+    <div class="stills">
+      <div class="still"><div class="still-label">STILL<br>Behind the scenes</div></div>
+      <div class="still"><div class="still-label">STILL<br>Setup camera</div></div>
+      <div class="still"><div class="still-label">STILL<br>Frame dal set</div></div>
+    </div>
+  </div>
+
+  <div class="phase reveal">
+    <div class="phase-header">
+      <span class="phase-num">Post-produzione</span>
+      <span class="phase-title">Color & Delivery</span>
+    </div>
+    <div class="phase-desc">Color grading in DaVinci Resolve per costruire il look finale del film. Palette coerente, contrasto cinematografico, skin tones naturali.</div>
+    <div class="stills stills-2">
+      <div class="still"><div class="still-label">STILL<br>Before color grading</div></div>
+      <div class="still"><div class="still-label">STILL<br>After color grading</div></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA -->
+<div class="cta-bar reveal">
+  <p class="cta-text"><strong>Cerchi un DoP per il tuo progetto?</strong><br>Parliamone.</p>
+  <a href="mailto:loraziuccello@gmail.com" class="btn-gold">Scrivimi</a>
+</div>
+
+<footer>
+  <span>© 2026 Lorenzo Uccello</span>
+  <span>DoP · Color Grading · Barcelona 2025</span>
+</footer>
+
+<script>
+const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60);obs.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

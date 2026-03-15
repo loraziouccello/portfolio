@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brutalia — Case Study · Lorenzo Uccello</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#060605; --surface:#0d0d0b; --cream:#EDE5D4;
+  --gold:#C4A46B; --gold-dim:rgba(196,164,107,0.3);
+  --muted:rgba(237,229,212,0.38); --border:rgba(237,229,212,0.08);
+  --accent:#E85D3A;
+  --mono:'JetBrains Mono',monospace; --serif:'Cormorant Garamond',Georgia,serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--cream);font-family:var(--serif);overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:999;opacity:0.25;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E")}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:0 56px;height:72px;background:rgba(6,6,5,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-back{font-family:var(--mono);font-size:9px;letter-spacing:0.22em;color:var(--muted);text-decoration:none;text-transform:uppercase;display:flex;align-items:center;gap:10px;transition:color 0.2s}
+.nav-back:hover{color:var(--gold)}
+.nav-project{font-family:var(--mono);font-size:9px;letter-spacing:0.15em;color:rgba(237,229,212,0.2);text-transform:uppercase}
+
+/* HERO */
+.hero{padding:120px 56px 80px;border-bottom:1px solid var(--border)}
+.hero-cat{font-family:var(--mono);font-size:8px;letter-spacing:0.3em;color:var(--accent);text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.hero-cat::before{content:'';display:block;width:24px;height:1px;background:var(--accent)}
+.hero-title{font-size:clamp(44px,5.5vw,76px);font-weight:300;line-height:0.95;margin-bottom:16px}
+.hero-sub{font-family:var(--mono);font-size:10px;letter-spacing:0.18em;color:var(--muted);text-transform:uppercase;margin-bottom:32px}
+.hero-desc{font-size:17px;font-style:italic;color:rgba(237,229,212,0.6);line-height:1.85;max-width:600px;border-left:2px solid var(--gold-dim);padding-left:20px}
+
+/* META BAR */
+.meta-bar{display:flex;gap:0;border:1px solid var(--border);margin:48px 56px 0}
+.meta-item{flex:1;padding:20px 24px;border-right:1px solid var(--border)}
+.meta-item:last-child{border-right:none}
+.meta-label{font-family:var(--mono);font-size:8px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:6px}
+.meta-value{font-size:15px;color:rgba(237,229,212,0.7);font-weight:300}
+
+/* SECTIONS */
+.section{padding:80px 56px}
+.section-header{display:flex;align-items:baseline;gap:20px;margin-bottom:48px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.section-n{font-family:var(--mono);font-size:10px;color:var(--gold);letter-spacing:0.2em}
+.section-t{font-family:var(--mono);font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--muted)}
+
+/* PROCESS STEPS */
+.process{display:grid;grid-template-columns:1fr;gap:0}
+.step{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border);border-bottom:none;min-height:340px}
+.step:last-child{border-bottom:1px solid var(--border)}
+.step:nth-child(even) .step-visual{order:-1}
+.step-content{padding:48px;display:flex;flex-direction:column;justify-content:center}
+.step-num{font-family:var(--mono);font-size:48px;font-weight:300;color:rgba(196,164,107,0.15);margin-bottom:16px;line-height:1}
+.step-title{font-size:24px;font-weight:300;margin-bottom:12px}
+.step-desc{font-size:14px;color:rgba(237,229,212,0.6);line-height:1.8;font-weight:300}
+.step-tools{margin-top:16px;display:flex;gap:6px;flex-wrap:wrap}
+.step-tool{font-family:var(--mono);font-size:8px;letter-spacing:0.1em;color:var(--accent);border:1px solid rgba(232,93,58,0.3);padding:3px 10px;text-transform:uppercase}
+.step-visual{background:var(--surface);display:flex;align-items:center;justify-content:center;border-left:1px solid var(--border);position:relative;overflow:hidden}
+.step:nth-child(even) .step-visual{border-left:none;border-right:1px solid var(--border)}
+.step-placeholder{font-family:var(--mono);font-size:10px;letter-spacing:0.15em;color:rgba(232,93,58,0.35);text-transform:uppercase;text-align:center;padding:24px;line-height:1.8}
+
+/* RESULT */
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.result-block{padding:32px;background:var(--surface);border:1px solid var(--border)}
+.result-label{font-family:var(--mono);font-size:8px;letter-spacing:0.25em;color:var(--gold);text-transform:uppercase;margin-bottom:12px}
+.result-text{font-size:15px;color:rgba(237,229,212,0.7);line-height:1.8;font-weight:300;font-style:italic}
+
+/* CTA */
+.cta-bar{display:flex;justify-content:space-between;align-items:center;padding:40px 56px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.cta-text{font-size:16px;color:rgba(237,229,212,0.6);font-weight:300}
+.cta-text strong{color:var(--cream)}
+.btn-gold{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;padding:14px 32px;background:var(--gold);color:var(--bg);text-decoration:none;transition:all 0.3s}
+.btn-gold:hover{background:#E8D4A0}
+
+footer{padding:24px 56px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:rgba(237,229,212,0.2);letter-spacing:0.1em}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero{padding:100px 24px 60px}
+  .meta-bar{flex-direction:column;margin:32px 24px 0}
+  .meta-item{border-right:none;border-bottom:1px solid var(--border)}
+  .meta-item:last-child{border-bottom:none}
+  .section{padding:60px 24px}
+  .step{grid-template-columns:1fr}
+  .step:nth-child(even) .step-visual{order:0}
+  .step-visual{border-left:none!important;border-right:none!important;border-top:1px solid var(--border);min-height:200px}
+  .result-grid{grid-template-columns:1fr}
+  nav{padding:0 24px}
+  .cta-bar{flex-direction:column;gap:20px;text-align:center;padding:40px 24px}
+  footer{padding:20px 24px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-back">← Torna al portfolio</a>
+  <span class="nav-project">Case Study</span>
+</nav>
+
+<section class="hero reveal">
+  <div class="hero-cat">100% AI — Campaña de marca</div>
+  <div class="hero-title">Brutalia</div>
+  <div class="hero-sub">Social Campaign · AI Video Production · 2025</div>
+  <div class="hero-desc">Campaña audiovisual completa para marca de restauración italiana. Desde el concepto creativo hasta el video final — todo generado con inteligencia artificial, con criterios cinematográficos reales.</div>
+</section>
+
+<div class="meta-bar reveal">
+  <div class="meta-item"><div class="meta-label">Cliente</div><div class="meta-value">Brutalia</div></div>
+  <div class="meta-item"><div class="meta-label">Tipo</div><div class="meta-value">Social Campaign</div></div>
+  <div class="meta-item"><div class="meta-label">Ruolo</div><div class="meta-value">AI Director · Editor</div></div>
+  <div class="meta-item"><div class="meta-label">Pipeline</div><div class="meta-value">100% AI</div></div>
+</div>
+
+<!-- 01 PROCESSO -->
+<div class="section reveal">
+  <div class="section-header">
+    <span class="section-n">01</span>
+    <span class="section-t">Proceso creativo</span>
+  </div>
+
+  <div class="process">
+
+    <div class="step reveal">
+      <div class="step-content">
+        <div class="step-num">01</div>
+        <div class="step-title">Ideazione & Concept</div>
+        <div class="step-desc">Analisi del brand, definizione del mood visivo e creazione dello storyboard. Ogni frame è pensato prima di generare qualsiasi cosa.</div>
+        <div class="step-tools"><span class="step-tool">Moodboard</span><span class="step-tool">Storyboard</span><span class="step-tool">Reference</span></div>
+      </div>
+      <div class="step-visual">
+        <div class="step-placeholder">SCREENSHOT<br>Moodboard &<br>Concept</div>
+      </div>
+    </div>
+
+    <div class="step reveal">
+      <div class="step-content">
+        <div class="step-num">02</div>
+        <div class="step-title">Generazione AI</div>
+        <div class="step-desc">Prompt engineering iterativo per ottenere il look esatto. Generazione di scene, personaggi e ambienti con coerenza visiva tra tutte le clip.</div>
+        <div class="step-tools"><span class="step-tool">Runway Gen-3</span><span class="step-tool">Kling 1.6</span><span class="step-tool">Prompt Engineering</span></div>
+      </div>
+      <div class="step-visual">
+        <div class="step-placeholder">SCREENSHOT<br>AI Generation<br>Interface</div>
+      </div>
+    </div>
+
+    <div class="step reveal">
+      <div class="step-content">
+        <div class="step-num">03</div>
+        <div class="step-title">Post-Produzione & Montaggio</div>
+        <div class="step-desc">Montaggio, color grading e sound design. Le clip AI vengono trattate come footage reale — stesso flusso di lavoro professionale.</div>
+        <div class="step-tools"><span class="step-tool">DaVinci Resolve</span><span class="step-tool">After Effects</span><span class="step-tool">Color Grading</span></div>
+      </div>
+      <div class="step-visual">
+        <div class="step-placeholder">SCREENSHOT<br>Timeline &<br>Color Grading</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 02 RISULTATO -->
+<div class="section reveal" style="padding-top:0">
+  <div class="section-header">
+    <span class="section-n">02</span>
+    <span class="section-t">Resultado</span>
+  </div>
+
+  <div class="result-grid">
+    <div class="result-block">
+      <div class="result-label">Approccio</div>
+      <div class="result-text">L'AI non è un trucco — è uno strumento con cui costruire un linguaggio visivo coerente. Ogni scelta è intenzionale: palette, ritmo, composizione.</div>
+    </div>
+    <div class="result-block">
+      <div class="result-label">Valore per il brand</div>
+      <div class="result-text">Contenuto di qualità cinematografica a una frazione del costo e del tempo di una produzione tradizionale. Pronto per social, web, e campagne paid.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-bar reveal">
+  <p class="cta-text"><strong>Vuoi una campagna AI per il tuo brand?</strong><br>Parliamone.</p>
+  <a href="mailto:loraziuccello@gmail.com" class="btn-gold">Scrivimi</a>
+</div>
+
+<footer>
+  <span>© 2026 Lorenzo Uccello</span>
+  <span>AI Director · Barcelona 2025</span>
+</footer>
+
+<script>
+const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60);obs.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
