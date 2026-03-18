@@ -120,7 +120,7 @@ nav { position:sticky; top:0; z-index:100; display:flex; justify-content:space-b
 .thumb-landscape { background-size:contain !important; background-repeat:no-repeat !important; background-color:var(--bg) !important; }
 
 /* === GRID — AI & SOCIAL (compact square cards) === */
-.grid-vertical { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.grid-vertical { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin:0 auto; }
 .grid-vertical .card .thumb { aspect-ratio:1/1; height:auto; }
 .grid-vertical .card-placeholder { aspect-ratio:1/1; background:rgba(196,164,107,0.03); border:1px dashed rgba(196,164,107,0.15); display:flex; align-items:center; justify-content:center; }
 
@@ -131,11 +131,11 @@ nav { position:sticky; top:0; z-index:100; display:flex; justify-content:space-b
 /* === UGC === */
 .ugc-header { margin-top:48px; margin-bottom:24px; padding-top:32px; border-top:1px solid var(--border-faint); }
 .ugc-label { font-family:'JetBrains Mono',monospace; font-size:14px; letter-spacing:0.12em; color:var(--gold); text-transform:uppercase; }
-.grid-ugc { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.grid-ugc { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin:0 auto; }
 .grid-ugc .card .thumb { aspect-ratio:1/1; height:auto; }
 
 /* === CINEMA (compact landscape) === */
-.grid-cinema { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+.grid-cinema { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; margin:0 auto; }
 .grid-cinema .card .thumb { aspect-ratio:16/9; height:auto; }
 .grid-cinema .card .overlay { padding:16px 4px 8px; }
 .grid-cinema .card .overlay[style] { opacity:1 !important; background:none !important; position:relative; }
