@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Burger Maker — Case Study · Lorenzo Uccello</title>
+<title>Syracoffee — Case Study · Lorenzo Uccello</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#060605;--surface:#0d0d0b;--cream:#EDE5D4;--gold:#C4A46B;--muted:rgba(237,229,212,0.38);--border:rgba(237,229,212,0.08);--accent:#F5C842;--mono:'JetBrains Mono',monospace;--serif:'Cormorant Garamond',Georgia,serif}
+:root{--bg:#060605;--surface:#0d0d0b;--cream:#EDE5D4;--gold:#C4A46B;--muted:rgba(237,229,212,0.38);--border:rgba(237,229,212,0.08);--accent:#D4956A;--mono:'JetBrains Mono',monospace;--serif:'Cormorant Garamond',Georgia,serif}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--cream);font-family:var(--serif);overflow-x:hidden}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:0 56px;height:72px;background:rgba(6,6,5,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
@@ -24,12 +24,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 .hero-bullets span{color:var(--accent);font-family:var(--mono);font-size:10px;letter-spacing:0.1em}
 .section{padding:64px 56px}
 .section-label{font-family:var(--mono);font-size:10px;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;margin-bottom:20px}
-.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .photo{overflow:hidden;border:1px solid var(--border);background:var(--surface)}
 .photo img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover;transition:transform 0.5s}
 .photo:hover img{transform:scale(1.03)}
-.video-btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:0.15em;color:var(--accent);text-transform:uppercase;text-decoration:none;border:1px solid rgba(245,200,66,0.3);padding:14px 28px;transition:all 0.3s;margin-top:32px}
-.video-btn:hover{background:rgba(245,200,66,0.1);border-color:var(--accent)}
+.video-btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:0.15em;color:var(--accent);text-transform:uppercase;text-decoration:none;border:1px solid rgba(212,149,106,0.3);padding:14px 28px;transition:all 0.3s;margin-top:32px}
+.video-btn:hover{background:rgba(212,149,106,0.1);border-color:var(--accent)}
 .cta-bar{display:flex;justify-content:space-between;align-items:center;padding:40px 56px;border-top:1px solid var(--border)}
 .cta-text{font-size:16px;color:rgba(237,229,212,0.6);font-weight:300}
 .cta-text strong{color:var(--cream)}
@@ -38,39 +38,49 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content
 footer{padding:24px 56px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:rgba(237,229,212,0.2);letter-spacing:0.1em}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
-@media(max-width:768px){.hero{padding:100px 24px 50px}.section{padding:48px 24px}.grid-2{grid-template-columns:1fr}nav{padding:0 24px}.cta-bar{flex-direction:column;gap:20px;text-align:center;padding:40px 24px}footer{padding:20px 24px}}
+@media(max-width:768px){.hero{padding:100px 24px 50px}.section{padding:48px 24px}.grid-3{grid-template-columns:1fr 1fr}nav{padding:0 24px}.cta-bar{flex-direction:column;gap:20px;text-align:center;padding:40px 24px}footer{padding:20px 24px}}
 </style>
 </head>
 <body>
 <nav><a href="index.html" class="nav-back">← Torna al portfolio</a><span class="nav-project">Case Study</span></nav>
 
 <section class="hero reveal">
-  <div class="hero-cat">Viral Content · Social Media · Food</div>
-  <div class="hero-title">The Burger <em>Maker</em></div>
-  <div class="hero-sub">Social Content · Dirección · 2024</div>
-  <div class="hero-desc">2 video virali per una hamburguesería. Regia, riprese e montaggio — tutto pensato per catturare l'attenzione nei primi 2 secondi. ASMR del cibo, formato nativo 9:16, close-up estremi.</div>
+  <div class="hero-cat">Brand Content · Shooting · Fall Campaign</div>
+  <div class="hero-title">Syra<em>coffee</em></div>
+  <div class="hero-sub">Dirección · Fotografía · Edición · 2025</div>
+  <div class="hero-desc">Campagna autunnale per Syracoffee. Quattro storie che convergono in un unico video narrativo. Contenuto social con struttura cinematografica — regia, fotografia e montaggio completo.</div>
   <div class="hero-bullets">
-    <span>VIEWS</span> — 789K+ organiche tra TikTok e Instagram<br>
-    <span>FORMATO</span> — 9:16 nativo, pensato per mobile<br>
-    <span>AUDIO</span> — ASMR reale del cibo, no tracce stock
+    <span>SHOOTING</span> — 9 foto editoriali<br>
+    <span>VIDEO</span> — Narrativa social con struttura cinema<br>
+    <span>RUOLO</span> — Dirección, fotografía, edición
   </div>
 </section>
 
 <div class="section reveal">
   <div class="section-label">Shooting</div>
-  <div class="grid-2">
-    <div class="photo"><img src="burger_photo1.jpg" alt="burger 1"></div>
-    <div class="photo"><img src="burger_photo2.jpg" alt="burger 2"></div>
+  <div class="grid-3">
+    <div class="photo"><img src="syra_photo1.jpg" alt="syra 1"></div>
+    <div class="photo"><img src="syra_photo2.jpg" alt="syra 2"></div>
+    <div class="photo"><img src="syra_photo3.jpg" alt="syra 3"></div>
   </div>
-  <a class="video-btn" href="https://youtube.com/shorts/jEGL5YrYqvg" target="_blank">▶ Guarda il video — Smash Burger</a>
-  <a class="video-btn" href="https://youtube.com/shorts/qS2E3exNoPo" target="_blank" style="margin-left:12px">▶ Guarda il video — Patatine</a>
+  <div class="grid-3" style="margin-top:10px">
+    <div class="photo"><img src="syra_photo4.jpg" alt="syra 4"></div>
+    <div class="photo"><img src="syra_photo5.jpg" alt="syra 5"></div>
+    <div class="photo"><img src="syra_photo6.jpg" alt="syra 6"></div>
+  </div>
+  <div class="grid-3" style="margin-top:10px">
+    <div class="photo"><img src="syra_photo7.jpg" alt="syra 7"></div>
+    <div class="photo"><img src="syra_photo8.jpg" alt="syra 8"></div>
+    <div class="photo"><img src="syra_photo9.jpg" alt="syra 9"></div>
+  </div>
+  <a class="video-btn" href="https://youtube.com/shorts/q4oPr6LDNcI" target="_blank">▶ Guarda il video</a>
 </div>
 
 <div class="cta-bar reveal">
-  <p class="cta-text"><strong>Hai un brand food?</strong><br>Possiamo farlo anche per te.</p>
+  <p class="cta-text"><strong>Hai un brand da raccontare?</strong><br>Foto + video, tutto in uno.</p>
   <a href="mailto:loraziuccello@gmail.com" class="btn-gold">Scrivimi</a>
 </div>
-<footer><span>© 2026 Lorenzo Uccello</span><span>The Burger Maker · 2024</span></footer>
+<footer><span>© 2026 Lorenzo Uccello</span><span>Syracoffee · Fall Campaign 2025</span></footer>
 <script>const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60);obs.unobserve(e.target)}})},{threshold:0.1});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));</script>
 </body>
 </html>
