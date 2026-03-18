@@ -1,181 +1,114 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>DAM Barbers — Case Study · Lorenzo Uccello</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root {
-  --black: #060605; --surface: #0d0d0b; --cream: #EDE5D4;
-  --gold: #B8913A; --gold-dim: rgba(184,145,58,0.3);
-  --muted: rgba(237,229,212,0.38); --border: rgba(237,229,212,0.08);
-  --mono: 'DM Mono', monospace; --serif: 'Cormorant Garamond', Georgia, serif;
-  --silver: #C8C0B4;
-}
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body { background:var(--black); color:var(--cream); font-family:var(--serif); overflow-x:hidden; }
-body::before { content:''; position:fixed; inset:0; pointer-events:none; z-index:999; opacity:0.3;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); }
-
-nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify-content:space-between; align-items:center; padding:0 56px; height:72px; background:rgba(6,6,5,0.9); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); }
-.nav-back { font-family:var(--mono); font-size:9px; letter-spacing:0.22em; color:var(--muted); text-decoration:none; text-transform:uppercase; display:flex; align-items:center; gap:10px; transition:color 0.2s; }
-.nav-back:hover { color:var(--gold); }
-.nav-project { font-family:var(--mono); font-size:9px; letter-spacing:0.15em; color:rgba(237,229,212,0.2); text-transform:uppercase; }
-
-/* HERO */
-.hero { padding-top:72px; min-height:100vh; display:grid; grid-template-columns:1fr 1fr; position:relative; overflow:hidden; }
-.hero-left { padding:80px 56px; display:flex; flex-direction:column; justify-content:center; z-index:2; }
-.hero-category { font-family:var(--mono); font-size:8px; letter-spacing:0.3em; color:var(--silver); text-transform:uppercase; margin-bottom:24px; display:flex; align-items:center; gap:12px; }
-.hero-category::before { content:''; display:block; width:24px; height:1px; background:var(--silver); }
-.hero-title { font-size:clamp(40px,5vw,72px); font-weight:300; line-height:0.95; letter-spacing:-0.02em; margin-bottom:12px; }
-.hero-title em { font-style:italic; color:rgba(237,229,212,0.45); }
-.hero-subtitle { font-family:var(--mono); font-size:10px; letter-spacing:0.18em; color:var(--muted); text-transform:uppercase; margin-bottom:40px; }
-.hero-tagline { font-size:17px; font-style:italic; color:rgba(237,229,212,0.6); line-height:1.85; max-width:400px; margin-bottom:48px; border-left:2px solid var(--gold-dim); padding-left:20px; }
-.stats-row { display:flex; gap:0; border:1px solid var(--border); }
-.stat-box { flex:1; padding:24px 28px; border-right:1px solid var(--border); position:relative; overflow:hidden; }
-.stat-box:last-child { border-right:none; }
-.stat-box::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--silver); }
-.stat-num { font-family:var(--serif); font-size:clamp(28px,3vw,42px); font-weight:300; line-height:1; color:var(--silver); display:block; margin-bottom:6px; }
-.stat-label { font-family:var(--mono); font-size:8px; letter-spacing:0.2em; color:var(--muted); text-transform:uppercase; display:block; }
-.stat-sub { font-family:var(--mono); font-size:8px; color:rgba(237,229,212,0.2); display:block; margin-top:4px; }
-.hero-right { position:relative; overflow:hidden; }
-.hero-img { position:absolute; inset:0; background-size:cover; background-position:center top; filter:saturate(0.5) brightness(0.5); }
-.hero-gradient { position:absolute; inset:0; background:linear-gradient(to right, var(--black) 0%, transparent 45%), linear-gradient(to top, var(--black) 0%, transparent 40%); }
-.hero-badge { position:absolute; top:40px; right:40px; font-family:var(--mono); font-size:8px; letter-spacing:0.15em; color:var(--silver); border:1px solid rgba(200,192,180,0.3); padding:8px 16px; text-transform:uppercase; background:rgba(6,6,5,0.8); }
-
-/* SECTIONS */
-.section { padding:80px 56px; }
-.section-header { display:flex; align-items:baseline; gap:20px; margin-bottom:48px; padding-bottom:20px; border-bottom:1px solid var(--border); }
-.section-n { font-family:var(--mono); font-size:10px; color:var(--gold); letter-spacing:0.2em; }
-.section-t { font-family:var(--mono); font-size:10px; letter-spacing:0.28em; text-transform:uppercase; color:var(--muted); }
-
-/* BRIEF */
-.brief-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
-.brief-block { padding:32px; background:var(--surface); border:1px solid var(--border); border-top:2px solid var(--silver); }
-.brief-label { font-family:var(--mono); font-size:8px; letter-spacing:0.25em; color:var(--silver); text-transform:uppercase; margin-bottom:16px; }
-.brief-text { font-size:15px; font-style:italic; color:rgba(237,229,212,0.75); line-height:1.85; }
-
-/* VIDEO */
-.video-wrap { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; background:var(--surface); border:1px solid var(--border); }
-.video-wrap iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:none; }
-
-/* PHOTO GRID */
-.photo-grid-main { display:grid; grid-template-columns:repeat(12,1fr); gap:8px; margin-top:40px; }
-.pg-hero { grid-column:span 5; }
-.pg-tall { grid-column:span 4; }
-.pg-med { grid-column:span 3; }
-.pg-wide { grid-column:span 7; }
-.pg-side { grid-column:span 5; }
-.pimg { overflow:hidden; height:100%; min-height:280px; position:relative; }
-.pimg img { width:100%; height:100%; object-fit:cover; object-position:top; transition:transform 0.6s ease; display:block; }
-.pimg:hover img { transform:scale(1.04); }
-
-/* CREDITS */
-.credits-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); margin-top:8px; }
-.credit-col { background:var(--black); padding:32px; }
-.credit-role { font-family:var(--mono); font-size:8px; letter-spacing:0.22em; color:var(--silver); text-transform:uppercase; margin-bottom:10px; }
-.credit-name { font-size:18px; font-weight:300; }
-.credit-note { font-family:var(--mono); font-size:9px; color:var(--muted); margin-top:4px; letter-spacing:0.08em; }
-
-/* PIPELINE */
-.pipeline { display:flex; align-items:stretch; gap:0; overflow-x:auto; padding-bottom:8px; }
-.pipe-step { flex:1; min-width:130px; padding:24px 20px; background:var(--surface); border:1px solid var(--border); border-right:none; position:relative; }
-.pipe-step:last-child { border-right:1px solid var(--border); }
-.pipe-step::after { content:'→'; position:absolute; right:-14px; top:50%; transform:translateY(-50%); font-family:var(--mono); font-size:14px; color:var(--gold); z-index:2; background:var(--black); padding:0 2px; }
-.pipe-step:last-child::after { display:none; }
-.pipe-n { font-family:var(--mono); font-size:8px; color:var(--gold); letter-spacing:0.2em; margin-bottom:10px; }
-.pipe-tool { font-size:15px; margin-bottom:6px; line-height:1.2; }
-.pipe-desc { font-family:var(--mono); font-size:9px; color:var(--muted); line-height:1.6; letter-spacing:0.05em; }
-
-.cta-bar { padding:64px 56px; display:flex; justify-content:space-between; align-items:center; border-top:1px solid var(--border); background:var(--surface); }
-.cta-text { font-size:clamp(20px,2.5vw,32px); font-weight:300; font-style:italic; color:rgba(237,229,212,0.6); }
-.cta-text strong { color:var(--cream); font-weight:400; font-style:normal; }
-.btn-gold { padding:16px 40px; background:var(--gold); color:var(--black); font-family:var(--mono); font-size:9px; letter-spacing:0.22em; text-transform:uppercase; text-decoration:none; transition:all 0.25s; white-space:nowrap; }
-.btn-gold:hover { background:#D4A84E; }
-footer { padding:24px 56px; display:flex; justify-content:space-between; border-top:1px solid var(--border); font-family:var(--mono); font-size:9px; color:rgba(237,229,212,0.18); letter-spacing:0.1em; }
-
-.reveal { opacity:0; transform:translateY(24px); transition:opacity 0.7s ease, transform 0.7s ease; }
-.reveal.visible { opacity:1; transform:translateY(0); }
-
-@media(max-width:900px) {
-  nav { padding:0 24px; }
-  .section { padding:60px 24px; }
-  .hero { grid-template-columns:1fr; }
-  .hero-right { display:none; }
-  .brief-grid { grid-template-columns:1fr; }
-  .credits-grid { grid-template-columns:1fr; }
-  .photo-grid-main { grid-template-columns:1fr 1fr; }
-  .pg-hero, .pg-tall, .pg-med, .pg-wide, .pg-side { grid-column:span 1; }
-  .cta-bar { flex-direction:column; gap:24px; text-align:center; }
-}
+:root{--bg:#060605;--surface:#0d0d0b;--cream:#EDE5D4;--gold:#C4A46B;--gold-dim:rgba(196,164,107,0.3);--muted:rgba(237,229,212,0.38);--border:rgba(237,229,212,0.08);--accent:#D4A46B;--mono:'JetBrains Mono',monospace;--serif:'Cormorant Garamond',Georgia,serif}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}body{background:var(--bg);color:var(--cream);font-family:var(--serif);overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:0 56px;height:72px;background:rgba(6,6,5,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-back{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;color:rgba(237,229,212,0.5);text-decoration:none;text-transform:uppercase;transition:color 0.2s}.nav-back:hover{color:var(--gold)}
+.nav-project{font-family:var(--mono);font-size:10px;letter-spacing:0.15em;color:rgba(237,229,212,0.2);text-transform:uppercase}
+.hero{padding:120px 56px 80px;border-bottom:1px solid var(--border)}
+.hero-cat{font-family:var(--mono);font-size:9px;letter-spacing:0.3em;color:var(--accent);text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:12px}.hero-cat::before{content:'';display:block;width:24px;height:1px;background:var(--accent)}
+.hero-title{font-size:clamp(44px,5.5vw,76px);font-weight:300;line-height:0.95;margin-bottom:16px}
+.hero-sub{font-family:var(--mono);font-size:10px;letter-spacing:0.18em;color:var(--muted);text-transform:uppercase;margin-bottom:32px}
+.hero-desc{font-size:18px;font-style:italic;color:rgba(237,229,212,0.6);line-height:1.85;max-width:620px;border-left:2px solid var(--gold-dim);padding-left:20px}
+.meta-bar{display:flex;gap:0;border:1px solid var(--border);margin:48px 56px 0}
+.meta-item{flex:1;padding:20px 24px;border-right:1px solid var(--border)}.meta-item:last-child{border-right:none}
+.meta-label{font-family:var(--mono);font-size:8px;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;margin-bottom:6px}
+.meta-value{font-size:15px;color:rgba(237,229,212,0.7);font-weight:300}
+.section{padding:80px 56px}
+.section-header{display:flex;align-items:baseline;gap:20px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.section-n{font-family:var(--mono);font-size:12px;color:var(--gold);letter-spacing:0.2em}
+.section-t{font-size:clamp(20px,2.5vw,30px);font-weight:300;color:var(--cream)}
+.section-desc{font-size:16px;font-style:italic;color:rgba(237,229,212,0.55);line-height:1.85;max-width:640px;margin-bottom:36px;font-weight:300}
+.process{display:grid;grid-template-columns:1fr;gap:0}
+.step{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border);border-bottom:none;min-height:280px}.step:last-child{border-bottom:1px solid var(--border)}
+.step:nth-child(even) .step-visual{order:-1}
+.step-content{padding:48px;display:flex;flex-direction:column;justify-content:center}
+.step-num{font-family:var(--mono);font-size:48px;font-weight:300;color:rgba(212,164,107,0.15);margin-bottom:16px;line-height:1}
+.step-title{font-size:22px;font-weight:300;margin-bottom:12px}
+.step-desc{font-size:15px;color:rgba(237,229,212,0.6);line-height:1.8;font-weight:300}
+.step-tools{margin-top:16px;display:flex;gap:6px;flex-wrap:wrap}
+.step-tool{font-family:var(--mono);font-size:8px;letter-spacing:0.1em;color:var(--accent);border:1px solid rgba(212,164,107,0.3);padding:4px 10px;text-transform:uppercase}
+.step-visual{background:var(--surface);display:flex;align-items:center;justify-content:center;border-left:1px solid var(--border);overflow:hidden}
+.step:nth-child(even) .step-visual{border-left:none;border-right:1px solid var(--border)}
+.step-visual img{width:100%;height:100%;object-fit:cover}
+.video-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;background:var(--surface);border:1px solid var(--border)}
+.video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:none}
+.video-tags{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.video-tag{font-family:var(--mono);font-size:9px;color:var(--muted);border:1px solid var(--border);padding:8px 16px;letter-spacing:0.12em;text-transform:uppercase}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.photo{overflow:hidden;border:1px solid var(--border);background:var(--surface)}
+.photo img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover;object-position:top;transition:transform 0.5s}.photo:hover img{transform:scale(1.03)}
+.cta-bar{display:flex;justify-content:space-between;align-items:center;padding:40px 56px;border-top:1px solid var(--border)}
+.cta-text{font-size:16px;color:rgba(237,229,212,0.6);font-weight:300}.cta-text strong{color:var(--cream)}
+.btn-gold{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;padding:14px 32px;background:var(--gold);color:var(--bg);text-decoration:none;transition:all 0.3s}.btn-gold:hover{background:#E8D4A0}
+footer{padding:24px 56px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:rgba(237,229,212,0.2);letter-spacing:0.1em}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:768px){.hero{padding:100px 24px 60px}.meta-bar{flex-direction:column;margin:32px 24px 0}.meta-item{border-right:none;border-bottom:1px solid var(--border)}.meta-item:last-child{border-bottom:none}.section{padding:60px 24px}.step{grid-template-columns:1fr}.step:nth-child(even) .step-visual{order:0}.step-visual{border-left:none!important;border-right:none!important;border-top:1px solid var(--border);min-height:250px}.grid-3{grid-template-columns:1fr 1fr}nav{padding:0 24px}.cta-bar{flex-direction:column;gap:20px;text-align:center;padding:40px 24px}footer{padding:20px 24px}}
 </style>
 </head>
 <body>
-
 <nav>
   <a href="index.html" class="nav-back">← Torna al portfolio</a>
-  <span class="nav-project">Case Study · DAM Barbers</span>
+  <span class="nav-project">Case Study</span>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-left">
-    <div class="hero-category">Case Study · Brand Launch · Fashion Editorial</div>
-    <h1 class="hero-title">DAM<br><em>Barbers</em></h1>
-    <div class="hero-subtitle">Direzione · Fotografia · Video · Barcelona 2025</div>
-    <p class="hero-tagline">
-      Video e fotografia di lancio per un nuovo brand di barberia a Barcellona. Identità visiva costruita da zero: tono, estetica, narrativa. Tutto pensato per il debutto sui social.
-    </p>
-    <div class="stats-row">
-      <div class="stat-box">
-        <span class="stat-num">01</span>
-        <span class="stat-label">Brand Launch</span>
-        <span class="stat-sub">Video + Foto</span>
-      </div>
-      <div class="stat-box">
-        <span class="stat-num">5</span>
-        <span class="stat-label">Modelli</span>
-        <span class="stat-sub">Editorial shoot</span>
-      </div>
-      <div class="stat-box">
-        <span class="stat-num">3</span>
-        <span class="stat-label">Filmmaker</span>
-        <span class="stat-sub">Collaborazione</span>
-      </div>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-img" style="background-image:url('PLACEHOLDER_IMG_6')"></div>
-    <div class="hero-gradient"></div>
-    <div class="hero-badge">Brand Launch · Barcelona</div>
-  </div>
+<section class="hero reveal">
+  <div class="hero-cat">Brand Launch · Video + Editorial</div>
+  <div class="hero-title">DAM Barbers</div>
+  <div class="hero-sub">Dirección · Fotografía · Edición · Barcelona 2025</div>
+  <div class="hero-desc">Nuova barberia a Barcellona, zero presenza digitale. Ho costruito l'identità visiva da zero — un video di lancio e un editorial fotografico per il debutto sui social.</div>
+</section>
+
+<div class="meta-bar reveal">
+  <div class="meta-item"><div class="meta-label">Cliente</div><div class="meta-value">DAM Barbers</div></div>
+  <div class="meta-item"><div class="meta-label">Tipo</div><div class="meta-value">Brand Launch</div></div>
+  <div class="meta-item"><div class="meta-label">Ruolo</div><div class="meta-value">Regia · Montaggio · Color</div></div>
+  <div class="meta-item"><div class="meta-label">Location</div><div class="meta-value">Barcelona</div></div>
 </div>
 
-<!-- BRIEF -->
 <div class="section reveal">
   <div class="section-header">
     <span class="section-n">01</span>
-    <span class="section-t">Brief & Obiettivo</span>
+    <span class="section-t">Proceso creativo</span>
   </div>
-  <div class="brief-grid">
-    <div class="brief-block">
-      <div class="brief-label">Il cliente</div>
-      <p class="brief-text">
-        DAM Barbers — nuova barberia a Barcellona. Apertura imminente, zero presenza digitale. Obiettivo: costruire un'identità visiva forte e coerente per il lancio sui social, con un video e un editorial fotografico.
-      </p>
+  <div class="process">
+    <div class="step reveal">
+      <div class="step-content">
+        <div class="step-num">01</div>
+        <div class="step-title">Concept & Pre-produzione</div>
+        <div class="step-desc">Definizione del tono del brand — maschile, contemporaneo, curato. Mood board, riferimenti visivi, scouting location e coordinamento del set.</div>
+        <div class="step-tools"><span class="step-tool">Moodboard</span><span class="step-tool">Scouting</span><span class="step-tool">Casting</span></div>
+      </div>
+      <div class="step-visual"><img src="dam_step1.jpg" alt="Concept"></div>
     </div>
-    <div class="brief-block">
-      <div class="brief-label">Il brief</div>
-      <p class="brief-text">
-        Creare contenuto che trasmettesse il tono del brand — maschile, contemporaneo, curato. Un video di lancio per i social e una serie di foto editoriali da usare come identità visiva iniziale del profilo.
-      </p>
+    <div class="step reveal">
+      <div class="step-content">
+        <div class="step-num">02</div>
+        <div class="step-title">Riprese & Shooting</div>
+        <div class="step-desc">Video girato in formato 9:16 nativo per social. Shooting fotografico editoriale in studio con luce controllata.</div>
+        <div class="step-tools"><span class="step-tool">Regia</span><span class="step-tool">DoP</span><span class="step-tool">9:16 Nativo</span></div>
+      </div>
+      <div class="step-visual"><img src="dam_step2.jpg" alt="Shooting"></div>
+    </div>
+    <div class="step reveal">
+      <div class="step-content">
+        <div class="step-num">03</div>
+        <div class="step-title">Montaggio & Color Grading</div>
+        <div class="step-desc">Ritmo del video costruito sull'identità del brand. Color grading coerente tra video e foto.</div>
+        <div class="step-tools"><span class="step-tool">DaVinci Resolve</span><span class="step-tool">Color Grading</span><span class="step-tool">Sound Design</span></div>
+      </div>
+      <div class="step-visual"><img src="dam_step3.jpg" alt="Post-production"></div>
     </div>
   </div>
 </div>
 
-<!-- VIDEO -->
 <div class="section reveal" style="padding-top:0">
   <div class="section-header">
     <span class="section-n">02</span>
@@ -184,90 +117,39 @@ footer { padding:24px 56px; display:flex; justify-content:space-between; border-
   <div class="video-wrap">
     <iframe src="https://www.youtube.com/embed/tEQuwMR6k60" allowfullscreen></iframe>
   </div>
-  <div style="display:flex;gap:16px;margin-top:16px;flex-wrap:wrap">
-    <div style="font-family:var(--mono);font-size:9px;color:var(--muted);border:1px solid var(--border);padding:8px 16px;letter-spacing:0.12em;text-transform:uppercase">Regia · Lorenzo Uccello</div>
-    <div style="font-family:var(--mono);font-size:9px;color:var(--muted);border:1px solid var(--border);padding:8px 16px;letter-spacing:0.12em;text-transform:uppercase">Montaggio · Lorenzo Uccello</div>
-    <div style="font-family:var(--mono);font-size:9px;color:var(--muted);border:1px solid var(--border);padding:8px 16px;letter-spacing:0.12em;text-transform:uppercase">Color Grading · Lorenzo Uccello</div>
-    <div style="font-family:var(--mono);font-size:9px;color:var(--muted);border:1px solid var(--border);padding:8px 16px;letter-spacing:0.12em;text-transform:uppercase">Formato · 9:16 Social</div>
+  <div class="video-tags">
+    <div class="video-tag">Regia · Lorenzo Uccello</div>
+    <div class="video-tag">Montaggio · Lorenzo Uccello</div>
+    <div class="video-tag">Color Grading · Lorenzo Uccello</div>
   </div>
 </div>
 
-<!-- PHOTO EDITORIAL -->
 <div class="section reveal" style="padding-top:0">
   <div class="section-header">
     <span class="section-n">03</span>
-    <span class="section-t">Editorial Fotografico · In Collaborazione</span>
+    <span class="section-t">Editorial fotografico</span>
   </div>
-  <p style="font-size:16px;font-style:italic;color:var(--muted);max-width:600px;line-height:1.9;margin-bottom:40px">
-    Shooting realizzato in collaborazione con altri filmmaker. Location di studio, luce controllata, identità visiva coerente in ogni scatto.
-  </p>
-
-  <div class="photo-grid-main">
-    <div class="pg-hero pimg">
-      <img src="PLACEHOLDER_IMG_1" alt="DAM 4">
-    </div>
-    <div class="pg-tall pimg">
-      <img src="PLACEHOLDER_IMG_2" alt="DAM 3">
-    </div>
-    <div class="pg-med pimg">
-      <img src="PLACEHOLDER_IMG_3" alt="DAM 1">
-    </div>
-    <div class="pg-side pimg">
-      <img src="PLACEHOLDER_IMG_4" alt="DAM 5">
-    </div>
-    <div class="pg-wide pimg">
-      <img src="PLACEHOLDER_IMG_5" alt="DAM 2">
-    </div>
+  <div class="section-desc">Shooting in collaborazione. Identità visiva coerente in ogni scatto — il tono del brand tradotto in immagini.</div>
+  <div class="grid-3">
+    <div class="photo"><img src="dam_photo1.jpg" alt="DAM 1"></div>
+    <div class="photo"><img src="dam_photo2.jpg" alt="DAM 2"></div>
+    <div class="photo"><img src="dam_photo3.jpg" alt="DAM 3"></div>
   </div>
 </div>
 
-<!-- PIPELINE -->
-<div class="section reveal" style="padding-top:0">
-  <div class="section-header">
-    <span class="section-n">04</span>
-    <span class="section-t">Pipeline di Produzione</span>
-  </div>
-  <div class="pipeline">
-    <div class="pipe-step">
-      <div class="pipe-n">01</div>
-      <div class="pipe-tool">Concept</div>
-      <div class="pipe-desc">Definizione del tono e dell'estetica del brand. Mood board, riferimenti visivi, scelta location.</div>
-    </div>
-    <div class="pipe-step">
-      <div class="pipe-n">02</div>
-      <div class="pipe-tool">Casting & Set</div>
-      <div class="pipe-desc">Selezione dei modelli. Coordinamento del set in collaborazione con altri filmmaker.</div>
-    </div>
-    <div class="pipe-step">
-      <div class="pipe-n">03</div>
-      <div class="pipe-tool">Riprese & Foto</div>
-      <div class="pipe-desc">Girato video e shooting fotografico in studio. Luce controllata, formato 9:16 nativo.</div>
-    </div>
-    <div class="pipe-step">
-      <div class="pipe-n">04</div>
-      <div class="pipe-tool">Montaggio</div>
-      <div class="pipe-desc">DaVinci Resolve. Ritmo del video costruito sull'identità del brand — pulito, contemporaneo.</div>
-    </div>
-    <div class="pipe-step">
-      <div class="pipe-n">05</div>
-      <div class="pipe-tool">Color & Delivery</div>
-      <div class="pipe-desc">Color grading coerente tra video e foto. Consegna ottimizzata per Instagram e TikTok.</div>
-    </div>
-  </div>
-</div>
-
-<!-- CTA -->
-<div class="cta-bar">
-  <p class="cta-text"><strong>Lanci un brand?</strong><br>Video + identità visiva dall'inizio.</p>
-  <a href="/cdn-cgi/l/email-protection#85e9eaf7e4ffecf0e6e6e0e9e9eac5e2e8e4ece9abe6eae8" class="btn-gold">Scrivimi</a>
+<div class="cta-bar reveal">
+  <p class="cta-text"><strong>Lanci un brand?</strong><br>Video + foto, un'identità visiva completa.</p>
+  <a href="mailto:loraziuccello@gmail.com" class="btn-gold">Scrivimi</a>
 </div>
 
 <footer>
   <span>© 2026 Lorenzo Uccello</span>
-  <span>Case Study · DAM Barbers · Barcelona 2025</span>
+  <span>DAM Barbers · Brand Launch · Barcelona 2025</span>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-const obs = new IntersectionObserver((entries) => {
-  entries.forEach((e,i) => {
-    if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible')
+<script>
+const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60);obs.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paula's Choice — Case Study · Lorenzo Uccello</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#060605; --surface:#0d0d0b; --cream:#EDE5D4;
+  --gold:#C4A46B; --muted:rgba(237,229,212,0.38); --border:rgba(237,229,212,0.08);
+  --accent:#7EB8A8;
+  --mono:'JetBrains Mono',monospace; --serif:'Cormorant Garamond',Georgia,serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--cream);font-family:var(--serif);overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:0 56px;height:72px;background:rgba(6,6,5,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-back{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;color:rgba(237,229,212,0.5);text-decoration:none;text-transform:uppercase;transition:color 0.2s}
+.nav-back:hover{color:var(--gold)}
+.nav-project{font-family:var(--mono);font-size:10px;letter-spacing:0.15em;color:rgba(237,229,212,0.2);text-transform:uppercase}
+
+.hero{padding:120px 56px 60px;border-bottom:1px solid var(--border)}
+.hero-cat{font-family:var(--mono);font-size:9px;letter-spacing:0.3em;color:var(--accent);text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.hero-cat::before{content:'';display:block;width:24px;height:1px;background:var(--accent)}
+.hero-title{font-size:clamp(40px,5vw,72px);font-weight:300;line-height:0.95;margin-bottom:12px}
+.hero-title em{font-style:italic;color:rgba(237,229,212,0.45)}
+.hero-sub{font-family:var(--mono);font-size:10px;letter-spacing:0.18em;color:var(--muted);text-transform:uppercase;margin-bottom:32px}
+.hero-desc{font-size:18px;font-style:italic;color:rgba(237,229,212,0.6);line-height:1.85;max-width:620px;border-left:2px solid rgba(196,164,107,0.3);padding-left:20px;margin-bottom:40px}
+.hero-bullets{display:flex;gap:32px;font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:0.1em}
+.hero-bullets span{color:var(--accent)}
+
+.section{padding:64px 56px}
+.section-label{font-family:var(--mono);font-size:10px;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;margin-bottom:20px}
+
+/* VIDEO THUMBNAIL */
+.video-thumb{display:block;position:relative;overflow:hidden;border:1px solid var(--border);background:var(--surface);margin-bottom:10px;text-decoration:none}
+.video-thumb img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;transition:transform 0.5s}
+.video-thumb:hover img{transform:scale(1.03)}
+.play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:64px;height:64px;background:rgba(6,6,5,0.7);border:2px solid rgba(237,229,212,0.4);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all 0.3s}
+.play-btn::after{content:'';display:block;width:0;height:0;border-style:solid;border-width:10px 0 10px 18px;border-color:transparent transparent transparent var(--cream);margin-left:4px}
+.video-thumb:hover .play-btn{background:rgba(196,164,107,0.3);border-color:var(--gold)}
+
+/* PHOTO GRID */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.photo{overflow:hidden;border:1px solid var(--border);background:var(--surface)}
+.photo img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover;transition:transform 0.5s}
+.photo:hover img{transform:scale(1.03)}
+
+.cta-bar{display:flex;justify-content:space-between;align-items:center;padding:40px 56px;border-top:1px solid var(--border)}
+.cta-text{font-size:16px;color:rgba(237,229,212,0.6);font-weight:300}
+.cta-text strong{color:var(--cream)}
+.btn-gold{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;padding:14px 32px;background:var(--gold);color:var(--bg);text-decoration:none;transition:all 0.3s}
+.btn-gold:hover{background:#E8D4A0}
+footer{padding:24px 56px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:rgba(237,229,212,0.2);letter-spacing:0.1em}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:768px){
+  .hero{padding:100px 24px 50px}
+  .hero-bullets{flex-direction:column;gap:12px}
+  .section{padding:48px 24px}
+  .grid-3{grid-template-columns:1fr 1fr}
+  nav{padding:0 24px}
+  .cta-bar{flex-direction:column;gap:20px;text-align:center;padding:40px 24px}
+  footer{padding:20px 24px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-back">← Torna al portfolio</a>
+  <span class="nav-project">Case Study</span>
+</nav>
+
+<section class="hero reveal">
+  <div class="hero-cat">Zero Budget · DIY Video · AI Photography</div>
+  <div class="hero-title">Paula's <em>Choice</em></div>
+  <div class="hero-sub">Product Content · 2025</div>
+  <div class="hero-desc">3 prodotti ricevuti, zero budget. Il video è costruito con materiali riciclati — vaschetta in plexiglass DIY, filo da pesca e una luce da 30W. Le foto sono ricreate con l'AI, generando sfondi ispirati agli ingredienti e alle fragranze di ogni prodotto.</div>
+</section>
+
+<!-- PROCESSO — solo testo -->
+<div class="section reveal" style="padding-top:40px;padding-bottom:20px">
+  <div class="section-label">Proceso creativo</div>
+  <div style="font-size:15px;color:var(--muted);line-height:2;font-weight:300;max-width:600px">
+    <span style="color:var(--accent);font-family:var(--mono);font-size:10px;letter-spacing:0.1em">VIDEO</span> — Setup DIY con materiali riciclati: plexiglass, filo da pesca, luce 30W<br>
+    <span style="color:var(--accent);font-family:var(--mono);font-size:10px;letter-spacing:0.1em">FOTO</span> — Sfondi generati con AI dagli ingredienti reali dei prodotti<br>
+    <span style="color:var(--accent);font-family:var(--mono);font-size:10px;letter-spacing:0.1em">POST</span> — Color grading e compositing in DaVinci Resolve
+  </div>
+</div>
+
+<!-- VIDEO -->
+<div class="section reveal">
+  <div class="section-label">Video</div>
+  <a class="video-thumb" href="https://youtube.com/shorts/s57Z0NVzCSU" target="_blank">
+    <img src="paulas_video_thumb.jpg" alt="Paula's Choice video">
+    <div class="play-btn"></div>
+  </a>
+</div>
+
+<!-- FOTO -->
+<div class="section reveal" style="padding-top:0">
+  <div class="section-label">AI Photo Shooting</div>
+  <div class="grid-3">
+    <div class="photo"><img src="paulas_photo1.jpg" alt="product 1"></div>
+    <div class="photo"><img src="paulas_photo2.jpg" alt="product 2"></div>
+    <div class="photo"><img src="paulas_photo3.jpg" alt="product 3"></div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-bar reveal">
+  <p class="cta-text"><strong>Hai un prodotto da raccontare?</strong><br>Anche con zero budget.</p>
+  <a href="mailto:loraziuccello@gmail.com" class="btn-gold">Scrivimi</a>
+</div>
+
+<footer>
+  <span>© 2026 Lorenzo Uccello</span>
+  <span>Paula's Choice · 2025</span>
+</footer>
+
+<script>
+const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60);obs.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
