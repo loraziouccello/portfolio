@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vittoryia — Case Study · Lorenzo Uccello</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#060605;--surface:#0d0d0b;--cream:#EDE5D4;--gold:#C4A46B;--muted:rgba(237,229,212,0.38);--border:rgba(237,229,212,0.08);--accent:#C4A46B;--mono:'JetBrains Mono',monospace;--serif:'Cormorant Garamond',Georgia,serif}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--cream);font-family:var(--serif);overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:0 56px;height:72px;background:rgba(6,6,5,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-back{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;color:rgba(237,229,212,0.5);text-decoration:none;text-transform:uppercase;transition:color 0.2s}
+.nav-back:hover{color:var(--gold)}
+.nav-project{font-family:var(--mono);font-size:10px;letter-spacing:0.15em;color:rgba(237,229,212,0.2);text-transform:uppercase}
+.hero{padding:120px 56px 60px;border-bottom:1px solid var(--border)}
+.hero-cat{font-family:var(--mono);font-size:9px;letter-spacing:0.3em;color:var(--accent);text-transform:uppercase;margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.hero-cat::before{content:'';display:block;width:24px;height:1px;background:var(--accent)}
+.hero-title{font-size:clamp(40px,5vw,72px);font-weight:300;line-height:0.95;margin-bottom:12px}
+.hero-title em{font-style:italic;color:rgba(237,229,212,0.45)}
+.hero-sub{font-family:var(--mono);font-size:10px;letter-spacing:0.18em;color:var(--muted);text-transform:uppercase;margin-bottom:32px}
+.hero-desc{font-size:18px;font-style:italic;color:rgba(237,229,212,0.6);line-height:1.85;max-width:620px;border-left:2px solid rgba(196,164,107,0.3);padding-left:20px;margin-bottom:40px}
+.hero-bullets{font-size:15px;color:var(--muted);line-height:2;font-weight:300;max-width:600px}
+.hero-bullets span{color:var(--accent);font-family:var(--mono);font-size:10px;letter-spacing:0.1em}
+.section{padding:64px 56px}
+.section-label{font-family:var(--mono);font-size:10px;letter-spacing:0.22em;color:var(--gold);text-transform:uppercase;margin-bottom:20px}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.photo{overflow:hidden;border:1px solid var(--border);background:var(--surface)}
+.photo img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover;object-position:top;transition:transform 0.5s}
+.photo:hover img{transform:scale(1.03)}
+.video-btn{display:inline-flex;align-items:center;gap:12px;font-family:var(--mono);font-size:11px;letter-spacing:0.15em;color:var(--accent);text-transform:uppercase;text-decoration:none;border:1px solid rgba(196,164,107,0.3);padding:14px 28px;transition:all 0.3s;margin-top:32px}
+.video-btn:hover{background:rgba(196,164,107,0.1);border-color:var(--accent)}
+.cta-bar{display:flex;justify-content:space-between;align-items:center;padding:40px 56px;border-top:1px solid var(--border)}
+.cta-text{font-size:16px;color:rgba(237,229,212,0.6);font-weight:300}
+.cta-text strong{color:var(--cream)}
+.btn-gold{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;padding:14px 32px;background:var(--gold);color:var(--bg);text-decoration:none;transition:all 0.3s}
+.btn-gold:hover{background:#E8D4A0}
+footer{padding:24px 56px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:rgba(237,229,212,0.2);letter-spacing:0.1em}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:768px){.hero{padding:100px 24px 50px}.section{padding:48px 24px}.grid-2{grid-template-columns:1fr}nav{padding:0 24px}.cta-bar{flex-direction:column;gap:20px;text-align:center;padding:40px 24px}footer{padding:20px 24px}}
+</style>
+</head>
+<body>
+<nav><a href="index.html" class="nav-back">← Torna al portfolio</a><span class="nav-project">Case Study</span></nav>
+
+<section class="hero reveal">
+  <div class="hero-cat">Brand Content · Video · Photography</div>
+  <div class="hero-title"><em>Vittoryia</em></div>
+  <div class="hero-sub">Dirección · Fotografía · Edición · 2025</div>
+  <div class="hero-desc">Produzione video e shooting fotografico completo. Regia, fotografia e montaggio — identità visiva costruita per il brand.</div>
+  <div class="hero-bullets">
+    <span>VIDEO</span> — Regia, riprese, montaggio<br>
+    <span>FOTO</span> — Shooting editoriale<br>
+    <span>RUOLO</span> — Direzione creativa completa
+  </div>
+</section>
+
+<div class="section reveal">
+  <div class="section-label">Shooting</div>
+  <div class="grid-2">
+    <div class="photo"><img src="vittoryia_photo1.jpg" alt="vittoryia 1"></div>
+    <div class="photo"><img src="vittoryia_photo2.jpg" alt="vittoryia 2"></div>
+  </div>
+  <div class="grid-2" style="margin-top:10px">
+    <div class="photo"><img src="vittoryia_photo3.jpg" alt="vittoryia 3"></div>
+    <div class="photo"><img src="vittoryia_photo4.jpg" alt="vittoryia 4"></div>
+  </div>
+  <a class="video-btn" href="https://youtube.com/shorts/5YyjV_LqFwQ" target="_blank">▶ Guarda il video</a>
+</div>
+
+<div class="cta-bar reveal">
+  <p class="cta-text"><strong>Vuoi contenuto per il tuo brand?</strong><br>Video + foto, tutto in uno.</p>
+  <a href="mailto:loraziuccello@gmail.com" class="btn-gold">Scrivimi</a>
+</div>
+<footer><span>© 2026 Lorenzo Uccello</span><span>Vittoryia · 2025</span></footer>
+<script>const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*60);obs.unobserve(e.target)}})},{threshold:0.1});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));</script>
+</body>
+</html>
